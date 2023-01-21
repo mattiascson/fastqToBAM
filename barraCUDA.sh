@@ -1,7 +1,9 @@
 #!/usr/bin/bash
 
-Read1=$(ls fastq | grep "191" | grep "R1")
-Read2=$(ls fastq | grep "191" | grep "R2")
+for Read1 in $(ls fastq | grep "R1")
+do
+Sample=$(echo $Read1 | cut -d"-" -f1)
+Read2=$(ls fastq | grep "R2" | grep ^$Sample-)
 fileFix=$(echo $Read1 | cut -d_ -f1)
 
 # Generate processed fastq
@@ -30,3 +32,4 @@ mv aln.bam.bai BAM/"$fileFix"_fastp-dedup.bam.bai
 # Empty RAMdrive
 rm ./RAMdrive/fastp_"$Read1"
 rm ./RAMdrive/fastp_"$Read2"
+done
