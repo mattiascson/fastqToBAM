@@ -1,6 +1,10 @@
-# fastqToBAM
+# fastqToBAM and counts
 
-## fastp and barraCUDA
+## barraCUDA vs. STAR
+
+![480 samples. PCA on cpm counts](PCAcomparison.png)
+
+## fastp, barraCUDA
 
 -   fastp for filtering, trimming and deduplication of reads.\
     fastp used min. read length 35 to prevent memory error in barraCUDA.\
